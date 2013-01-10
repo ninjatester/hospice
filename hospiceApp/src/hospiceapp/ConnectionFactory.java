@@ -14,7 +14,7 @@ import java.sql.SQLException;
  */
 public class ConnectionFactory {
     String driverClassName = "org.h2.Driver";
-        String connectionUrl = "jdbc:h2:test";
+        String connectionUrl = "jdbc:h2:students";
         String dbUser = "sa";
         String dbPwd = "";
 
