@@ -5,6 +5,7 @@
 package hospiceapp;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -210,10 +211,20 @@ public class hospiceDesign extends javax.swing.JFrame {
         );
 
         clearBtn.setText("Clear");
+        clearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearBtnActionPerformed(evt);
+            }
+        });
 
         deleteBtn.setText("Delete");
 
         saveBtn.setText("Save");
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -259,6 +270,38 @@ public class hospiceDesign extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_courseTextFieldActionPerformed
 
+    private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
+        // TODO add your handling code here:
+        resetFields();
+    }//GEN-LAST:event_clearBtnActionPerformed
+
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+        // TODO add your handling code here:
+        //check data
+        if (nameTextField.getText() != "" && EGNTextField.getText() != ""
+                && specialtyTextField.getText() != "" && achievementTextField.getText() != "" && courseTextField.getText() != "")
+        {
+            
+        } else {
+            System.out.println("errro");
+            JOptionPane.showMessageDialog(this, "Eggs are not supposed to be green.");
+        }
+    }//GEN-LAST:event_saveBtnActionPerformed
+
+    
+    private void resetFields() {
+        nameTextField.setText("");
+        EGNTextField.setText("");
+        specialtyTextField.setText("");
+        achievementTextField.setText("");
+        courseTextField.setText("");
+        isOrphan.setSelected(false);
+        isMarried.setSelected(false);
+        isLonelyParent.setSelected(false);
+        hasRelatives.setSelected(false);
+        status.setSelected(false);
+    }
+    
     /**
      * @param args the command line arguments
      */
