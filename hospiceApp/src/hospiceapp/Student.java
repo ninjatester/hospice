@@ -12,7 +12,7 @@ public class Student {
         int idNumber;
         String name;
         int EGN;
-        String course;
+        int course;
         String specialty;
         String address;
         int isOrphan;
@@ -26,7 +26,7 @@ public class Student {
 
         }
 
-        public Student(int idNumber, String name, int EGN, String course, 
+        public Student(int idNumber, String name, int EGN, int course, 
                 String specialty, String address, int isOrphan, int isMarried, 
                 int isLonelyParent, int hasRelatives, double achievement, int status) {
                 this.idNumber = idNumber;
@@ -70,11 +70,11 @@ public class Student {
         
         
 
-        public String getCourse() {
+        public int getCourse() {
                 return course;
         }
 
-        public void setCourse(String course) {
+        public void setCourse(int course) {
                 this.course = course;
         }
 

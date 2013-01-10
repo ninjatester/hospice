@@ -37,7 +37,7 @@ public class StudentDAO {
                         ptmt = connection.prepareStatement(queryString);
                         ptmt.setString(1, studentInstance.getName());
                         ptmt.setInt(2, studentInstance.getEGN());
-                        ptmt.setString(3, studentInstance.getCourse());
+                        ptmt.setInt(3, studentInstance.getCourse());
                         ptmt.setString(4, studentInstance.getSpecialty());
                         ptmt.setString(5, studentInstance.getAddress());
                         ptmt.setInt(6, studentInstance.getIsOrphan());
@@ -78,7 +78,7 @@ public class StudentDAO {
                         ptmt = connection.prepareStatement(queryString);
                         ptmt.setString(1, studentInstance.getName());
                         ptmt.setInt(2, studentInstance.getEGN());
-                        ptmt.setString(3, studentInstance.getCourse());
+                        ptmt.setInt(3, studentInstance.getCourse());
                         ptmt.setString(4, studentInstance.getSpecialty());
                         ptmt.setString(5, studentInstance.getAddress());
                         ptmt.setInt(6, studentInstance.getIsOrphan());
@@ -145,7 +145,7 @@ public class StudentDAO {
                                 System.out.println("idNumber " + resultSet.getInt("idNumber")
                                                 + ", Name " + resultSet.getString("Name") +
                                                 ", EGN " + resultSet.getInt("EGN") + 
-                                                ", Course " + resultSet.getString("Course") + 
+                                                ", Course " + resultSet.getInt("Course") + 
                                                 ", Specialty " + resultSet.getString("Specialty") +
                                                 ", Address "  + resultSet.getString("Address") +
                                                 ", isOrphan " + resultSet.getInt("isOrphan") +

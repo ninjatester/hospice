@@ -1,0 +1,148 @@
+01-10 17:01:30 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "STUDENTS" not found; SQL statement:
+INSERT INTO students(name, EGN, course, specialty, address, isOrphan, isMarried, isLonelyParent, hasRelatives, achievement, status) VALUES(?,?,?,?,?,?,?,?,?,?,?) [42102-169]
+01-10 17:35:29 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE STUDENTS ( 
+IDNUMBER INT(9)  PRIMARY KEY NOT NULL AUTO_INCREMENT[*], 
+NAME VARCHAR(256) NOT NULL,
+EGN INT(10) NOT NULL,
+COURSE INT(10) NOT NULL,
+SPECIALTY VARCHAR(128) NOT NULL,
+ADDRESS VARCHAR(256) NOT NULL,
+ISORPHAN INT(2) NOT NULL,
+ISMARRIED INT(2) NOT NULL,
+ISLONELYPARENT INT(2) NOT NULL,
+HASRELATIVES INT(2) NOT NULL,
+ACHIEVEMENT DECIMAL(10,2) NOT NULL,
+STATUS INT(2) NOT NULL
+ ) "; expected "CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE students ( 
+idNumber int(9)  PRIMARY KEY NOT NULL auto_increment, 
+name varchar(256) NOT NULL,
+EGN int(10) NOT NULL,
+course int(10) NOT NULL,
+specialty varchar(128) NOT NULL,
+address varchar(256) NOT NULL,
+isOrphan int(2) NOT NULL,
+isMarried int(2) NOT NULL,
+isLonelyParent int(2) NOT NULL,
+hasRelatives int(2) NOT NULL,
+achievement DECIMAL(10,2) NOT NULL,
+status int(2) NOT NULL
+ ) [42001-169]
+01-10 17:35:56 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE STUDENTS ( 
+IDNUMBER INT(9)  PRIMARY KEY NOT NULL AUTO[*] INCREMENT, 
+NAME VARCHAR(256) NOT NULL,
+EGN INT(10) NOT NULL,
+COURSE INT(10) NOT NULL,
+SPECIALTY VARCHAR(128) NOT NULL,
+ADDRESS VARCHAR(256) NOT NULL,
+ISORPHAN INT(2) NOT NULL,
+ISMARRIED INT(2) NOT NULL,
+ISLONELYPARENT INT(2) NOT NULL,
+HASRELATIVES INT(2) NOT NULL,
+ACHIEVEMENT DECIMAL(10,2) NOT NULL,
+STATUS INT(2) NOT NULL
+ ) "; expected "CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE students ( 
+idNumber int(9)  PRIMARY KEY NOT NULL auto increment, 
+name varchar(256) NOT NULL,
+EGN int(10) NOT NULL,
+course int(10) NOT NULL,
+specialty varchar(128) NOT NULL,
+address varchar(256) NOT NULL,
+isOrphan int(2) NOT NULL,
+isMarried int(2) NOT NULL,
+isLonelyParent int(2) NOT NULL,
+hasRelatives int(2) NOT NULL,
+achievement DECIMAL(10,2) NOT NULL,
+status int(2) NOT NULL
+ ) [42001-169]
+01-10 17:37:29 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE STUDENTS ( 
+IDNUMBER INT(9)  PRIMARY KEY NOT NULL AUTOINCREMENT[*], 
+NAME VARCHAR(256) NOT NULL,
+EGN INT(10) NOT NULL,
+COURSE INT(10) NOT NULL,
+SPECIALTY VARCHAR(128) NOT NULL,
+ADDRESS VARCHAR(256) NOT NULL,
+ISORPHAN INT(2) NOT NULL,
+ISMARRIED INT(2) NOT NULL,
+ISLONELYPARENT INT(2) NOT NULL,
+HASRELATIVES INT(2) NOT NULL,
+ACHIEVEMENT DECIMAL(10,2) NOT NULL,
+STATUS INT(2) NOT NULL
+ ) "; expected "CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE students ( 
+idNumber int(9)  PRIMARY KEY NOT NULL autoincrement, 
+name varchar(256) NOT NULL,
+EGN int(10) NOT NULL,
+course int(10) NOT NULL,
+specialty varchar(128) NOT NULL,
+address varchar(256) NOT NULL,
+isOrphan int(2) NOT NULL,
+isMarried int(2) NOT NULL,
+isLonelyParent int(2) NOT NULL,
+hasRelatives int(2) NOT NULL,
+achievement DECIMAL(10,2) NOT NULL,
+status int(2) NOT NULL
+ ) [42001-169]
+01-10 17:37:31 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE STUDENTS ( 
+IDNUMBER INT(9)  PRIMARY KEY NOT NULL AUTOINCREMENT[*], 
+NAME VARCHAR(256) NOT NULL,
+EGN INT(10) NOT NULL,
+COURSE INT(10) NOT NULL,
+SPECIALTY VARCHAR(128) NOT NULL,
+ADDRESS VARCHAR(256) NOT NULL,
+ISORPHAN INT(2) NOT NULL,
+ISMARRIED INT(2) NOT NULL,
+ISLONELYPARENT INT(2) NOT NULL,
+HASRELATIVES INT(2) NOT NULL,
+ACHIEVEMENT DECIMAL(10,2) NOT NULL,
+STATUS INT(2) NOT NULL
+ ) "; expected "CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE students ( 
+idNumber int(9)  PRIMARY KEY NOT NULL autoincrement, 
+name varchar(256) NOT NULL,
+EGN int(10) NOT NULL,
+course int(10) NOT NULL,
+specialty varchar(128) NOT NULL,
+address varchar(256) NOT NULL,
+isOrphan int(2) NOT NULL,
+isMarried int(2) NOT NULL,
+isLonelyParent int(2) NOT NULL,
+hasRelatives int(2) NOT NULL,
+achievement DECIMAL(10,2) NOT NULL,
+status int(2) NOT NULL
+ ) [42001-169]
+01-10 17:39:43 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE STUDENTS ( 
+IDNUMBER BIGINT  PRIMARY KEY NOT NULL AUTO_INCREMENT[*], 
+NAME VARCHAR(256) NOT NULL,
+EGN INT(10) NOT NULL,
+COURSE INT(10) NOT NULL,
+SPECIALTY VARCHAR(128) NOT NULL,
+ADDRESS VARCHAR(256) NOT NULL,
+ISORPHAN INT(2) NOT NULL,
+ISMARRIED INT(2) NOT NULL,
+ISLONELYPARENT INT(2) NOT NULL,
+HASRELATIVES INT(2) NOT NULL,
+ACHIEVEMENT DECIMAL(10,2) NOT NULL,
+STATUS INT(2) NOT NULL
+ ) "; expected "CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE students ( 
+idNumber bigint  PRIMARY KEY NOT NULL auto_increment, 
+name varchar(256) NOT NULL,
+EGN int(10) NOT NULL,
+course int(10) NOT NULL,
+specialty varchar(128) NOT NULL,
+address varchar(256) NOT NULL,
+isOrphan int(2) NOT NULL,
+isMarried int(2) NOT NULL,
+isLonelyParent int(2) NOT NULL,
+hasRelatives int(2) NOT NULL,
+achievement DECIMAL(10,2) NOT NULL,
+status int(2) NOT NULL
+ ) [42001-169]
