@@ -278,13 +278,13 @@ public class hospiceDesign extends javax.swing.JFrame {
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
         //check data
-        if (nameTextField.getText() != "" && EGNTextField.getText() != ""
-                && specialtyTextField.getText() != "" && achievementTextField.getText() != "" && courseTextField.getText() != "")
+        if (nameTextField.getText().equals("") || EGNTextField.getText().equals("")
+                || specialtyTextField.getText().equals("") || achievementTextField.getText().equals("") || courseTextField.getText().equals(""))
         {
-            
+            JOptionPane.showMessageDialog(this, "There are empty fields");
         } else {
-            System.out.println("errro");
-            JOptionPane.showMessageDialog(this, "Eggs are not supposed to be green.");
+            Student addNew = new Student();
+          
         }
     }//GEN-LAST:event_saveBtnActionPerformed
 
