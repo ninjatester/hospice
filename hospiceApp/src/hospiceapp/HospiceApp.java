@@ -32,5 +32,7 @@ public class HospiceApp {
         
         // Adding Data
         student.add(test);
+        
+        student.findAll();
     }
 }

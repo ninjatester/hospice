@@ -73,7 +73,7 @@
               <Component id="jScrollPane2" min="-2" pref="379" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="14" max="32767" attributes="0"/>
+              <EmptySpace pref="13" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="clearBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="deleteBtn" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -92,7 +92,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable2">
+        <Component class="javax.swing.JTable" name="studentsListTable">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="4">
@@ -186,7 +186,7 @@
                       <Component id="courseTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="isMarried" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="hasRelatives" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="achievementTextField" alignment="1" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="achievementTextField" alignment="1" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="courseLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="33" max="32767" attributes="0"/>

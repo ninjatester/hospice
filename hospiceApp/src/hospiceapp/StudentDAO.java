@@ -4,6 +4,8 @@
  */
 package hospiceapp;
 
+import java.util.*;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -69,7 +71,7 @@ public class StudentDAO {
         public void update(Student studentInstance) {
 
                 try {
-                        String queryString = "UPDATE student SET name=?, SET EGN=?,"
+                        String queryString = "UPDATE students SET name=?, SET EGN=?,"
                                 + " SET course=?, SET specialty=?, SET address=?,"
                                 + " SET isOrphan=?, SET isMarried=?, SET isLonelyParent=?,"
                                 + " SET hasRelatives=?, SET achievement=?,"
@@ -111,7 +113,7 @@ public class StudentDAO {
         public void delete(int idNumber) {
 
                 try {
-                        String queryString = "DELETE FROM student WHERE idNumber=?";
+                        String queryString = "DELETE FROM students WHERE idNumber=?";
                         connection = getConnection();
                         ptmt = connection.prepareStatement(queryString);
                         ptmt.setInt(1, idNumber);
@@ -135,13 +137,30 @@ public class StudentDAO {
 
         }
 
-        public void findAll() {
+        public List<String[]> findAll() {
+            List<String[]> students = new ArrayList<String[]>();
                 try {
-                        String queryString = "SELECT * FROM student";
+                        String queryString = "SELECT * FROM students";
                         connection = getConnection();
                         ptmt = connection.prepareStatement(queryString);
                         resultSet = ptmt.executeQuery();
                         while (resultSet.next()) {
+                            String[] studentArr  = new String[12];
+                            studentArr[0] = Integer.toString(resultSet.getInt("idNumber"));
+                            studentArr[1] = resultSet.getString("Name");
+                             studentArr[2] = Integer.toString(resultSet.getInt("EGN"));
+                             studentArr[3] = Integer.toString(resultSet.getInt("Course"));
+                             studentArr[4] = resultSet.getString("Specialty");
+                             studentArr[5] = resultSet.getString("Address");
+                             studentArr[6] = Integer.toString(resultSet.getInt("isOrphan"));
+                             studentArr[7] = Integer.toString(resultSet.getInt("isMarried"));
+                             studentArr[8] = Integer.toString(resultSet.getInt("isLonelyParent"));
+                             studentArr[9] = Integer.toString(resultSet.getInt("hasRelatives"));
+                             studentArr[10] = Double.toString(resultSet.getDouble("achievement"));
+                             studentArr[11] = Double.toString(resultSet.getInt("status"));
+                             
+                             students.add(studentArr);
+                             /*
                                 System.out.println("idNumber " + resultSet.getInt("idNumber")
                                                 + ", Name " + resultSet.getString("Name") +
                                                 ", EGN " + resultSet.getInt("EGN") + 
@@ -154,7 +173,10 @@ public class StudentDAO {
                                                 ", hasRelatives " + resultSet.getInt("hasRelatives") +
                                                 ", achievement " + resultSet.getDouble("achievement") +
                                                 ", status " + resultSet.getInt("status"));
+                                                */
                         }
+                        
+                        
                 } catch (SQLException e) {
                         e.printStackTrace();
                 } finally {
@@ -170,7 +192,7 @@ public class StudentDAO {
                         } catch (Exception e) {
                                 e.printStackTrace();
                         }
-
+                       return students;
                 }
         }
 }

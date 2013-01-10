@@ -4,6 +4,9 @@
  */
 package hospiceapp;
 
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author workstation
@@ -15,6 +18,33 @@ public class hospiceDesign extends javax.swing.JFrame {
      */
     public hospiceDesign() {
         initComponents();
+        initTable();
+    }
+    
+    private void initTable() {
+        
+        studentDAO = new StudentDAO();
+        
+        model = new DefaultTableModel();
+        model.addColumn("id");
+        model.addColumn("Name");
+        model.addColumn("EGN");
+        model.addColumn("Course");
+        model.addColumn("Specialty");
+        model.addColumn("Address");
+        model.addColumn("isOrphan");
+        model.addColumn("isMarried");
+        model.addColumn("isLonelyParent");
+        model.addColumn("hasRelatives");
+        model.addColumn("achievement");
+        model.addColumn("status");
+        
+       List<String[]> studentResult = studentDAO.findAll();
+        for (int i = 0; i < studentResult.size(); i++) {
+		model.addRow(studentResult.get(i));
+	}
+        
+        studentsListTable.setModel(model);
     }
 
     /**
@@ -29,7 +59,7 @@ public class hospiceDesign extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        studentsListTable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         nameTextField = new javax.swing.JTextField();
         nameLabel = new javax.swing.JLabel();
@@ -66,7 +96,7 @@ public class hospiceDesign extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 600));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        studentsListTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -77,7 +107,7 @@ public class hospiceDesign extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(studentsListTable);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -174,7 +204,7 @@ public class hospiceDesign extends javax.swing.JFrame {
                     .addComponent(courseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(isMarried)
                     .addComponent(hasRelatives)
-                    .addComponent(achievementTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(achievementTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(courseLabel))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
@@ -210,7 +240,7 @@ public class hospiceDesign extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(clearBtn)
                     .addComponent(deleteBtn)
@@ -263,6 +293,8 @@ public class hospiceDesign extends javax.swing.JFrame {
             }
         });
     }
+    private DefaultTableModel model;
+    private StudentDAO studentDAO;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel EGNLabel;
     private javax.swing.JTextField EGNTextField;
@@ -280,12 +312,12 @@ public class hospiceDesign extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField nameTextField;
     private javax.swing.JButton saveBtn;
     private javax.swing.JLabel specialtyLabel;
     private javax.swing.JTextField specialtyTextField;
     private javax.swing.JCheckBox status;
+    private javax.swing.JTable studentsListTable;
     // End of variables declaration//GEN-END:variables
 }
