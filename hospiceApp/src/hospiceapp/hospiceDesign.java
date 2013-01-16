@@ -27,6 +27,7 @@ public class hospiceDesign extends javax.swing.JFrame {
         studentDAO = new StudentDAO();
         
         model = new DefaultTableModel() {
+            @Override
                     public boolean isCellEditable(int rowIndex, int mColIndex) {
                             return false;
                     }
