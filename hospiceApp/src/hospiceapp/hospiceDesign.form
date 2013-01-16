@@ -179,15 +179,17 @@
                       <Component id="isOrphan" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="EGNTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="EGNLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="achievementLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="courseTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="isMarried" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="hasRelatives" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="achievementTextField" alignment="1" min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="courseLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="EGNTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="EGNLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="achievementLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="courseTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="isMarried" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="hasRelatives" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="courseLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace pref="33" max="32767" attributes="0"/>
               </Group>

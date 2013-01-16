@@ -26,7 +26,12 @@ public class hospiceDesign extends javax.swing.JFrame {
         
         studentDAO = new StudentDAO();
         
-        model = new DefaultTableModel();
+        model = new DefaultTableModel() {
+                    public boolean isCellEditable(int rowIndex, int mColIndex) {
+                            return false;
+                    }
+        };
+                
         model.addColumn("id");
         model.addColumn("Name");
         model.addColumn("EGN");
@@ -198,15 +203,16 @@ public class hospiceDesign extends javax.swing.JFrame {
                     .addComponent(status)
                     .addComponent(isOrphan))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EGNTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(EGNLabel)
-                    .addComponent(achievementLabel)
-                    .addComponent(courseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(isMarried)
-                    .addComponent(hasRelatives)
-                    .addComponent(achievementTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(courseLabel))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(achievementTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(EGNTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(EGNLabel)
+                        .addComponent(achievementLabel)
+                        .addComponent(courseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(isMarried)
+                        .addComponent(hasRelatives)
+                        .addComponent(courseLabel)))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
