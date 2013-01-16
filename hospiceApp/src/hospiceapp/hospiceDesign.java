@@ -114,6 +114,11 @@ public class hospiceDesign extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        studentsListTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                studentsListTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(studentsListTable);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -294,6 +299,14 @@ public class hospiceDesign extends javax.swing.JFrame {
           
         }
     }//GEN-LAST:event_saveBtnActionPerformed
+
+    private void studentsListTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentsListTableMouseClicked
+        // TODO add your handling code here:
+        int row=studentsListTable.rowAtPoint(evt.getPoint());
+        int col= studentsListTable.columnAtPoint(evt.getPoint());
+        JOptionPane.showMessageDialog(null," Value in the cell clicked :"+ " " +studentsListTable.getValueAt(row,col).toString());
+        System.out.println(" Value in the cell clicked :"+ " "  +studentsListTable.getValueAt(row,col).toString());
+    }//GEN-LAST:event_studentsListTableMouseClicked
 
     
     private void resetFields() {
