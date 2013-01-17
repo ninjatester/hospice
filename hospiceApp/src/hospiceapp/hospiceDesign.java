@@ -59,6 +59,18 @@ public class hospiceDesign extends javax.swing.JFrame {
         
         studentsListTable.setModel(model);
     }
+    
+    private void resetTableModel() {
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged(); // notifies the JTable that the model has changed
+        
+        List<String[]> studentResult = studentDAO.findAll();
+        for (int i = 0; i < studentResult.size(); i++) {
+		model.addRow(studentResult.get(i));
+	}
+        
+        studentsListTable.setModel(model);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -255,6 +267,11 @@ public class hospiceDesign extends javax.swing.JFrame {
         });
 
         deleteBtn.setText("Delete");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
 
         saveBtn.setText("Save");
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -332,7 +349,7 @@ public class hospiceDesign extends javax.swing.JFrame {
         // TODO add your handling code here:
         int row=studentsListTable.rowAtPoint(evt.getPoint());
         int col= studentsListTable.columnAtPoint(evt.getPoint());
-        
+        selectStudentNumber = Integer.parseInt(studentsListTable.getValueAt(row,0).toString());
         
         nameTextField.setText(studentsListTable.getValueAt(row,1).toString());
         EGNTextField.setText(studentsListTable.getValueAt(row,2).toString());
@@ -362,6 +379,19 @@ public class hospiceDesign extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_isMarriedActionPerformed
 
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        // TODO add your handling code here:
+        if (selectStudentNumber == 0) {
+            JOptionPane.showMessageDialog(this, "You have to select a row which you would like to delete");
+        } else {
+            studentDAO.delete(selectStudentNumber);
+            selectStudentNumber =0;
+            resetFields();
+            resetTableModel();
+            JOptionPane.showMessageDialog(this, "Row has been removed successfully");
+        }
+    }//GEN-LAST:event_deleteBtnActionPerformed
+
     
     private void resetFields() {
         nameTextField.setText("");
@@ -375,6 +405,8 @@ public class hospiceDesign extends javax.swing.JFrame {
         isLonelyParent.setSelected(false);
         hasRelatives.setSelected(false);
         status.setSelected(false);
+        
+        selectStudentNumber = 0;
     }
     
     /**
@@ -413,6 +445,7 @@ public class hospiceDesign extends javax.swing.JFrame {
     }
     private DefaultTableModel model;
     private StudentDAO studentDAO;
+    private int selectStudentNumber;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel EGNLabel;
     private javax.swing.JTextField EGNTextField;
