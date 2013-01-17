@@ -48,21 +48,26 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane2" max="32767" attributes="0"/>
-                  <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="clearBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="saveBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="deleteBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -132,39 +137,39 @@
                       <Component id="nameTextField" min="-2" pref="153" max="-2" attributes="0"/>
                       <Component id="EGNTextField" min="-2" pref="153" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                          <Component id="specialtyLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="addressLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="addressTextField" min="-2" pref="174" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="specialtyTextField" min="-2" pref="174" max="-2" attributes="0"/>
+                          <Component id="isOrphan" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="isLonelyParent" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Component id="achievementLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="achievementTextField" min="-2" pref="68" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="achievementTextField" min="-2" pref="30" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="courseLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="courseTextField" min="-2" pref="51" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="isOrphan" min="-2" max="-2" attributes="0"/>
-                      <Component id="isMarried" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="isLonelyParent" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="courseTextField" min="-2" pref="25" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="specialtyLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="specialtyTextField" min="-2" pref="90" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="status" min="-2" max="-2" attributes="0"/>
+                          <Component id="isMarried" min="-2" max="-2" attributes="0"/>
                       </Group>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="status" min="-2" max="-2" attributes="0"/>
                       <Component id="hasRelatives" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="38" max="32767" attributes="0"/>
+                  <EmptySpace pref="70" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -175,23 +180,27 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="nameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="nameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="specialtyLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="specialtyTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="addressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="addressTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="isLonelyParent" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="status" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="isOrphan" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="achievementTextField" alignment="1" min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="EGNTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="EGNLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="achievementLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="courseTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="courseLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="achievementTextField" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="specialtyLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="specialtyTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="isMarried" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="hasRelatives" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="courseLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="33" max="32767" attributes="0"/>
@@ -217,12 +226,12 @@
             <Property name="text" type="java.lang.String" value="EGN"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="specialtyLabel">
+        <Component class="javax.swing.JLabel" name="addressLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Specialty"/>
+            <Property name="text" type="java.lang.String" value="Address"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="specialtyTextField">
+        <Component class="javax.swing.JTextField" name="addressTextField">
         </Component>
         <Component class="javax.swing.JLabel" name="achievementLabel">
           <Properties>
@@ -245,6 +254,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Married"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="isMarriedActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="isLonelyParent">
           <Properties>
@@ -253,8 +265,11 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="hasRelatives">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Has relatives in the hospice"/>
+            <Property name="text" type="java.lang.String" value="Relatives in"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hasRelativesActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="status">
           <Properties>
@@ -265,6 +280,13 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Orphan"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="specialtyLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Specialty"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="specialtyTextField">
         </Component>
       </SubComponents>
     </Container>

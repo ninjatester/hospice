@@ -6,6 +6,7 @@ package hospiceapp;
 
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -26,6 +27,8 @@ public class hospiceDesign extends javax.swing.JFrame {
         
         studentDAO = new StudentDAO();
         
+       
+        
         model = new DefaultTableModel() {
             @Override
                     public boolean isCellEditable(int rowIndex, int mColIndex) {
@@ -45,6 +48,9 @@ public class hospiceDesign extends javax.swing.JFrame {
         model.addColumn("hasRelatives");
         model.addColumn("achievement");
         model.addColumn("status");
+        
+         studentsListTable.getTableHeader().setReorderingAllowed(false);
+         studentsListTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         
        List<String[]> studentResult = studentDAO.findAll();
         for (int i = 0; i < studentResult.size(); i++) {
@@ -72,8 +78,8 @@ public class hospiceDesign extends javax.swing.JFrame {
         nameLabel = new javax.swing.JLabel();
         EGNTextField = new javax.swing.JTextField();
         EGNLabel = new javax.swing.JLabel();
-        specialtyLabel = new javax.swing.JLabel();
-        specialtyTextField = new javax.swing.JTextField();
+        addressLabel = new javax.swing.JLabel();
+        addressTextField = new javax.swing.JTextField();
         achievementLabel = new javax.swing.JLabel();
         achievementTextField = new javax.swing.JTextField();
         courseLabel = new javax.swing.JLabel();
@@ -83,6 +89,8 @@ public class hospiceDesign extends javax.swing.JFrame {
         hasRelatives = new javax.swing.JCheckBox();
         status = new javax.swing.JCheckBox();
         isOrphan = new javax.swing.JCheckBox();
+        specialtyLabel = new javax.swing.JLabel();
+        specialtyTextField = new javax.swing.JTextField();
         clearBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
         saveBtn = new javax.swing.JButton();
@@ -133,7 +141,7 @@ public class hospiceDesign extends javax.swing.JFrame {
 
         EGNLabel.setText("EGN");
 
-        specialtyLabel.setText("Specialty");
+        addressLabel.setText("Address");
 
         achievementLabel.setText("Achievement");
 
@@ -146,14 +154,26 @@ public class hospiceDesign extends javax.swing.JFrame {
         });
 
         isMarried.setText("Married");
+        isMarried.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                isMarriedActionPerformed(evt);
+            }
+        });
 
         isLonelyParent.setText("Lonely parent");
 
-        hasRelatives.setText("Has relatives in the hospice");
+        hasRelatives.setText("Relatives in");
+        hasRelatives.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hasRelativesActionPerformed(evt);
+            }
+        });
 
         status.setText("Approved");
 
         isOrphan.setText("Orphan");
+
+        specialtyLabel.setText("Specialty");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -168,33 +188,35 @@ public class hospiceDesign extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(EGNTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(specialtyLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(specialtyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(addressLabel)
                         .addGap(18, 18, 18)
+                        .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(isOrphan)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(isLonelyParent))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(achievementLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(achievementTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(achievementTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(courseLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(courseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(isOrphan)
-                    .addComponent(isMarried))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(isLonelyParent)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(courseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(specialtyLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(specialtyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(status))
+                        .addComponent(isMarried)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(status)
                     .addComponent(hasRelatives))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,22 +225,25 @@ public class hospiceDesign extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nameLabel)
-                    .addComponent(specialtyLabel)
-                    .addComponent(specialtyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addressLabel)
+                    .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(isLonelyParent)
                     .addComponent(status)
                     .addComponent(isOrphan))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(achievementTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(EGNTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(EGNLabel)
                         .addComponent(achievementLabel)
                         .addComponent(courseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(courseLabel)
+                        .addComponent(achievementTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(specialtyLabel)
+                        .addComponent(specialtyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(isMarried)
-                        .addComponent(hasRelatives)
-                        .addComponent(courseLabel)))
+                        .addComponent(hasRelatives)))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -245,16 +270,19 @@ public class hospiceDesign extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(clearBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(saveBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(deleteBtn)))
-                .addContainerGap())
+                        .addGap(18, 18, 18)
+                        .addComponent(deleteBtn)
+                        .addGap(20, 20, 20))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,7 +319,7 @@ public class hospiceDesign extends javax.swing.JFrame {
         // TODO add your handling code here:
         //check data
         if (nameTextField.getText().equals("") || EGNTextField.getText().equals("")
-                || specialtyTextField.getText().equals("") || achievementTextField.getText().equals("") || courseTextField.getText().equals(""))
+                || addressTextField.getText().equals("") || achievementTextField.getText().equals("") || courseTextField.getText().equals(""))
         {
             JOptionPane.showMessageDialog(this, "There are empty fields");
         } else {
@@ -304,17 +332,44 @@ public class hospiceDesign extends javax.swing.JFrame {
         // TODO add your handling code here:
         int row=studentsListTable.rowAtPoint(evt.getPoint());
         int col= studentsListTable.columnAtPoint(evt.getPoint());
+        
+        
+        nameTextField.setText(studentsListTable.getValueAt(row,1).toString());
+        EGNTextField.setText(studentsListTable.getValueAt(row,2).toString());
+        addressTextField.setText(studentsListTable.getValueAt(row,5).toString());
+        achievementTextField.setText(studentsListTable.getValueAt(row,10).toString());
+        courseTextField.setText(studentsListTable.getValueAt(row,3).toString());
+        specialtyTextField.setText(studentsListTable.getValueAt(row,4).toString());
+        isOrphan.setSelected(Boolean.parseBoolean(studentsListTable.getValueAt(row,6).toString()));
+        isMarried.setSelected(Boolean.parseBoolean(studentsListTable.getValueAt(row,7).toString()));
+        isLonelyParent.setSelected(Boolean.parseBoolean(studentsListTable.getValueAt(row,8).toString()));
+        hasRelatives.setSelected(Boolean.parseBoolean(studentsListTable.getValueAt(row,9).toString()));
+        status.setSelected(Boolean.parseBoolean(studentsListTable.getValueAt(row,11).toString()));
+        
+        
+       /* 
+        studentsListTable.convertRowIndexToModel(row);
         JOptionPane.showMessageDialog(null," Value in the cell clicked :"+ " " +studentsListTable.getValueAt(row,col).toString());
         System.out.println(" Value in the cell clicked :"+ " "  +studentsListTable.getValueAt(row,col).toString());
+        */
     }//GEN-LAST:event_studentsListTableMouseClicked
+
+    private void hasRelativesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hasRelativesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hasRelativesActionPerformed
+
+    private void isMarriedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isMarriedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_isMarriedActionPerformed
 
     
     private void resetFields() {
         nameTextField.setText("");
         EGNTextField.setText("");
-        specialtyTextField.setText("");
+        addressTextField.setText("");
         achievementTextField.setText("");
         courseTextField.setText("");
+        specialtyTextField.setText("");
         isOrphan.setSelected(false);
         isMarried.setSelected(false);
         isLonelyParent.setSelected(false);
@@ -363,6 +418,8 @@ public class hospiceDesign extends javax.swing.JFrame {
     private javax.swing.JTextField EGNTextField;
     private javax.swing.JLabel achievementLabel;
     private javax.swing.JTextField achievementTextField;
+    private javax.swing.JLabel addressLabel;
+    private javax.swing.JTextField addressTextField;
     private javax.swing.JButton clearBtn;
     private javax.swing.JLabel courseLabel;
     private javax.swing.JTextField courseTextField;
