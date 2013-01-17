@@ -333,7 +333,7 @@ public class hospiceDesign extends javax.swing.JFrame {
     }//GEN-LAST:event_clearBtnActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
-        // TODO add your handling code here:
+        // TODO ADD CHECKS FOR DATA TYPES
         //check data
         if (nameTextField.getText().equals("") || EGNTextField.getText().equals("")
                 || addressTextField.getText().equals("") || achievementTextField.getText().equals("") || courseTextField.getText().equals(""))
@@ -341,6 +341,24 @@ public class hospiceDesign extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "There are empty fields");
         } else {
             Student addNew = new Student();
+            addNew.setName(nameTextField.getText());
+            addNew.setAchievement(Double.parseDouble(achievementTextField.getText()));
+            addNew.setAddress(addressTextField.getText());
+            addNew.setCourse(Integer.parseInt(courseTextField.getText()));
+            addNew.setEGN(Integer.parseInt(EGNTextField.getText()));
+            addNew.setHasRelatives(((hasRelatives.isSelected()) ?1:0));
+            addNew.setIsLonelyParent((isLonelyParent.isSelected()) ?1:0);
+            addNew.setIsMarried((isLonelyParent.isSelected()) ?1:0);
+            addNew.setIsOrphan((isOrphan.isSelected()) ?1:0);
+            addNew.setSpecialty(specialtyTextField.getText());
+            addNew.setStatus((status.isSelected()) ?1:0);
+            
+            studentDAO.add(addNew);
+            
+            selectStudentNumber =0;
+            resetFields();
+            resetTableModel();
+            JOptionPane.showMessageDialog(this, "Student has been added successfully");
           
         }
     }//GEN-LAST:event_saveBtnActionPerformed
@@ -357,11 +375,11 @@ public class hospiceDesign extends javax.swing.JFrame {
         achievementTextField.setText(studentsListTable.getValueAt(row,10).toString());
         courseTextField.setText(studentsListTable.getValueAt(row,3).toString());
         specialtyTextField.setText(studentsListTable.getValueAt(row,4).toString());
-        isOrphan.setSelected(Boolean.parseBoolean(studentsListTable.getValueAt(row,6).toString()));
-        isMarried.setSelected(Boolean.parseBoolean(studentsListTable.getValueAt(row,7).toString()));
-        isLonelyParent.setSelected(Boolean.parseBoolean(studentsListTable.getValueAt(row,8).toString()));
-        hasRelatives.setSelected(Boolean.parseBoolean(studentsListTable.getValueAt(row,9).toString()));
-        status.setSelected(Boolean.parseBoolean(studentsListTable.getValueAt(row,11).toString()));
+        isOrphan.setSelected((Integer.parseInt(studentsListTable.getValueAt(row,6).toString()) != 0) ?true:false);
+        isMarried.setSelected((Integer.parseInt(studentsListTable.getValueAt(row,7).toString())!= 0) ?true:false);
+        isLonelyParent.setSelected((Integer.parseInt(studentsListTable.getValueAt(row,8).toString())!= 0) ?true:false);
+        hasRelatives.setSelected((Integer.parseInt(studentsListTable.getValueAt(row,9).toString())!= 0) ?true:false);
+        status.setSelected((Integer.parseInt(studentsListTable.getValueAt(row,11).toString())!= 0) ?true:false);
         
         
        /* 
