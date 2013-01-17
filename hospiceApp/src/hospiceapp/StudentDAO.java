@@ -71,11 +71,11 @@ public class StudentDAO {
         public void update(Student studentInstance) {
 
                 try {
-                        String queryString = "UPDATE students SET name=?, SET EGN=?,"
-                                + " SET course=?, SET specialty=?, SET address=?,"
-                                + " SET isOrphan=?, SET isMarried=?, SET isLonelyParent=?,"
-                                + " SET hasRelatives=?, SET achievement=?,"
-                                + " SET status=? WHERE idNumber=?";
+                        String queryString = "UPDATE students SET name=?, EGN=?,"
+                                + " course=?, specialty=?, address=?,"
+                                + " isOrphan=?, isMarried=?, isLonelyParent=?,"
+                                + " hasRelatives=?, achievement=?,"
+                                + " status=? WHERE idNumber=?";
                         connection = getConnection();
                         ptmt = connection.prepareStatement(queryString);
                         ptmt.setString(1, studentInstance.getName());
@@ -89,6 +89,7 @@ public class StudentDAO {
                         ptmt.setInt(9, studentInstance.getHasRelatives());
                         ptmt.setDouble(10, studentInstance.getAchievement());
                         ptmt.setInt(11, studentInstance.getStatus());
+                        ptmt.setInt(12, studentInstance.getIdNumber());
                         ptmt.executeUpdate();
                         System.out.println("Table Updated Successfully");
                 } catch (SQLException e) {

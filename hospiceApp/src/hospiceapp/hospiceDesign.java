@@ -353,12 +353,23 @@ public class hospiceDesign extends javax.swing.JFrame {
             addNew.setSpecialty(specialtyTextField.getText());
             addNew.setStatus((status.isSelected()) ?1:0);
             
-            studentDAO.add(addNew);
             
-            selectStudentNumber =0;
-            resetFields();
-            resetTableModel();
-            JOptionPane.showMessageDialog(this, "Student has been added successfully");
+            if (selectStudentNumber != 0) {
+                addNew.setIdNumber(selectStudentNumber);
+                studentDAO.update(addNew);
+                selectStudentNumber =0;
+                resetFields();
+                resetTableModel();
+                JOptionPane.showMessageDialog(this, "Student has been updated successfully");
+            } else {
+                studentDAO.add(addNew);
+                selectStudentNumber =0;
+                resetFields();
+                resetTableModel();
+                JOptionPane.showMessageDialog(this, "Student has been added successfully");
+            }
+            
+            
           
         }
     }//GEN-LAST:event_saveBtnActionPerformed
