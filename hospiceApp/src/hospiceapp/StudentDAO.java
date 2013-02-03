@@ -34,7 +34,7 @@ public class StudentDAO {
                         connection = getConnection();
                         ptmt = connection.prepareStatement(queryString);
                         ptmt.setString(1, studentInstance.getName());
-                        ptmt.setInt(2, studentInstance.getEGN());
+                        ptmt.setString(2, studentInstance.getEGN());
                         ptmt.setInt(3, studentInstance.getCourse());
                         ptmt.setString(4, studentInstance.getSpecialty());
                         ptmt.setString(5, studentInstance.getAddress());
@@ -75,7 +75,7 @@ public class StudentDAO {
                         connection = getConnection();
                         ptmt = connection.prepareStatement(queryString);
                         ptmt.setString(1, studentInstance.getName());
-                        ptmt.setInt(2, studentInstance.getEGN());
+                        ptmt.setString(2, studentInstance.getEGN());
                         ptmt.setInt(3, studentInstance.getCourse());
                         ptmt.setString(4, studentInstance.getSpecialty());
                         ptmt.setString(5, studentInstance.getAddress());
@@ -145,7 +145,7 @@ public class StudentDAO {
                             String[] studentArr  = new String[12];
                             studentArr[0] = Integer.toString(resultSet.getInt("idNumber"));
                             studentArr[1] = resultSet.getString("Name");
-                             studentArr[2] = Integer.toString(resultSet.getInt("EGN"));
+                             studentArr[2] = resultSet.getString("EGN");
                              studentArr[3] = Integer.toString(resultSet.getInt("Course"));
                              studentArr[4] = resultSet.getString("Specialty");
                              studentArr[5] = resultSet.getString("Address");
@@ -201,7 +201,7 @@ public class StudentDAO {
                                 + " WHERE EGN=? AND name=? AND course=? AND specialty=?";
                         connection = getConnection();
                         ptmt = connection.prepareStatement(queryString);
-                        ptmt.setInt(1, studentInstance.getEGN());
+                        ptmt.setString(1, studentInstance.getEGN());
                         ptmt.setString(2, studentInstance.getName());
                         ptmt.setInt(3, studentInstance.getCourse());
                         ptmt.setString(4, studentInstance.getSpecialty());

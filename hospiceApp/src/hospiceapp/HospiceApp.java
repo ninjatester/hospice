@@ -21,7 +21,7 @@ public class HospiceApp {
         test.setAchievement(5.70);
         test.setAddress("Arh G Kozarov 3");
         test.setCourse(3);
-        test.setEGN(1234567891);
+        test.setEGN("1234567891");
         test.setHasRelatives(0);
         test.setIsLonelyParent(0);
         test.setIsMarried(0);

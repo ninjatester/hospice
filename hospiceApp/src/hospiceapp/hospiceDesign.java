@@ -377,7 +377,7 @@ public class hospiceDesign extends javax.swing.JFrame {
             addNew.setAchievement(Double.parseDouble(achievementTextField.getText()));
             addNew.setAddress(addressTextField.getText());
             addNew.setCourse(Integer.parseInt(courseTextField.getText()));
-            addNew.setEGN(Integer.parseInt(EGNTextField.getText()));
+            addNew.setEGN(EGNTextField.getText());
             addNew.setHasRelatives(((hasRelatives.isSelected()) ?1:0));
             addNew.setIsLonelyParent((isLonelyParent.isSelected()) ?1:0);
             addNew.setIsMarried((isLonelyParent.isSelected()) ?1:0);
@@ -422,14 +422,8 @@ public class hospiceDesign extends javax.swing.JFrame {
         isMarried.setSelected((Integer.parseInt(studentsListTable.getValueAt(row,7).toString())!= 0) ?true:false);
         isLonelyParent.setSelected((Integer.parseInt(studentsListTable.getValueAt(row,8).toString())!= 0) ?true:false);
         hasRelatives.setSelected((Integer.parseInt(studentsListTable.getValueAt(row,9).toString())!= 0) ?true:false);
-        status.setSelected((Integer.parseInt(studentsListTable.getValueAt(row,11).toString())!= 0) ?true:false);
+        status.setSelected(((int)Double.parseDouble(studentsListTable.getValueAt(row,11).toString()) != 0) ?true:false);
         
-        
-       /* 
-        studentsListTable.convertRowIndexToModel(row);
-        JOptionPane.showMessageDialog(null," Value in the cell clicked :"+ " " +studentsListTable.getValueAt(row,col).toString());
-        System.out.println(" Value in the cell clicked :"+ " "  +studentsListTable.getValueAt(row,col).toString());
-        */
     }//GEN-LAST:event_studentsListTableMouseClicked
 
     private void hasRelativesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hasRelativesActionPerformed
@@ -541,7 +535,7 @@ public class hospiceDesign extends javax.swing.JFrame {
     private Student getStudentIntance(String[] studentArray) {
         Student addNew = new Student();
         addNew.setName(studentArray[1]);
-        addNew.setEGN(Integer.parseInt(studentArray[2]));
+        addNew.setEGN(studentArray[2]);
         addNew.setCourse(Integer.parseInt(studentArray[3]));
         addNew.setSpecialty(studentArray[4]);
         addNew.setAddress(studentArray[5]);

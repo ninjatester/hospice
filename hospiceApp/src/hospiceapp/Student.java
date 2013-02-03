@@ -7,7 +7,7 @@ package hospiceapp;
 public class Student implements java.io.Serializable {
         int idNumber;
         String name;
-        int EGN;
+        String EGN;
         int course;
         String specialty;
         String address;
@@ -22,7 +22,7 @@ public class Student implements java.io.Serializable {
 
         }
 
-        public Student(int idNumber, String name, int EGN, int course, 
+        public Student(int idNumber, String name, String EGN, int course, 
                 String specialty, String address, int isOrphan, int isMarried, 
                 int isLonelyParent, int hasRelatives, double achievement, int status) {
                 this.idNumber = idNumber;
@@ -57,11 +57,11 @@ public class Student implements java.io.Serializable {
                 this.name = name;
         }
 
-        public int getEGN() {
+        public String getEGN() {
             return EGN;
         }
 
-        public void setEGN(int EGN) {
+        public void setEGN(String EGN) {
             this.EGN = EGN;
         }
         
