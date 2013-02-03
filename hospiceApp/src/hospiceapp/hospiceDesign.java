@@ -4,6 +4,7 @@
  */
 package hospiceapp;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -12,9 +13,12 @@ import java.io.ObjectOutputStream;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.*;
 
 /**
  *
@@ -452,52 +456,86 @@ public class hospiceDesign extends javax.swing.JFrame {
     private void saveListBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveListBtnActionPerformed
         // TODO add your handling code here:
         //save lsit lgoic here
-        List<String[]> studentResult = studentDAO.findAll();
-        for (int i = 0; i < studentResult.size(); i++) {
-            String[] studentArr = studentResult.get(i);
-            String holder= "";
-            for(int j=0; j < studentArr.length; j++) {
-               holder += " " + studentArr[j];
-               
-            }
-             System.out.println(holder);
-        }
-        System.out.println("============================================");
-        try {
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("data.txt"));
-            out.writeObject(studentResult);
-        } catch (IOException ex) {
-            Logger.getLogger(
-                    hospiceDesign.class.getName()).log(
-                    Level.SEVERE, null, ex);
-        }
+         JFileChooser chooser = new JFileChooser();
+                
+                ExtensionFileFilter filter = new ExtensionFileFilter("Custom Program", new String[] { "mce"});
+                chooser.setFileFilter(filter);
+                
+                //chooser.showSaveDialog(null);
+                 int status = chooser.showSaveDialog(null);
+                if (status == JFileChooser.APPROVE_OPTION) {
+                  File selectedFile = chooser.getSelectedFile();
+                  System.out.println(selectedFile.getParent());
+                  System.out.println(selectedFile.getName());
+                  File fileName = new File( chooser.getSelectedFile( ) + ".mce" );
+                    if(fileName == null)
+                        return;
+                    if(fileName.exists())
+                    {
+                        int actionDialog = JOptionPane.showConfirmDialog(this,
+                                           "Replace existing file?");
+                        // may need to check for cancel option as well
+                        if (actionDialog == JOptionPane.NO_OPTION)
+                            return;
+                    }
+                    // okay to write file
+                    List<String[]> studentResult = studentDAO.findAll();
+                    try {
+                        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName));
+                        out.writeObject(studentResult);
+                        JOptionPane.showMessageDialog(this, "Data saved");
+                    } catch (IOException ex) {
+                        Logger.getLogger(
+                                hospiceDesign.class.getName()).log(
+                                Level.SEVERE, null, ex);
+                    }
+                  
+                } else if (status == JFileChooser.CANCEL_OPTION) {
+                  System.out.println(JFileChooser.CANCEL_OPTION);
+                }
+                
     }//GEN-LAST:event_saveListBtnActionPerformed
 
     private void readListBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_readListBtnActionPerformed
         // TODO add your handling code here:
-        try {
-            ObjectInputStream input = new ObjectInputStream(new FileInputStream("data.txt"));
+        JFileChooser chooser = new JFileChooser();
+                
+        ExtensionFileFilter filter = new ExtensionFileFilter("Custom Program", new String[] { "mce"});
+        chooser.setFileFilter(filter);
+        
+        int status = chooser.showOpenDialog(null);
+        if (status == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = chooser.getSelectedFile();
+            System.out.println(selectedFile.getParent());
+            System.out.println(selectedFile.getName());
+            
             try {
-                int newRows =0;
-                List<String[]> readed = (List<String[]>) input.readObject();
-                for (int i = 0; i < readed.size(); i++) {
-                        Student temp = getStudentIntance(readed.get(i));
-                        if (!studentDAO.checkExistance(temp)) {
-                            studentDAO.add(temp);
-                            newRows++;
-                        }
-                        
+                ObjectInputStream input = new ObjectInputStream(new FileInputStream(selectedFile));
+                try {
+                    int newRows =0;
+                    List<String[]> readed = (List<String[]>) input.readObject();
+                    for (int i = 0; i < readed.size(); i++) {
+                            Student temp = getStudentIntance(readed.get(i));
+                            if (!studentDAO.checkExistance(temp)) {
+                                studentDAO.add(temp);
+                                newRows++;
+                            }
+                    }
+                    selectStudentNumber =0;
+                    resetFields();
+                    resetTableModel();
+                    JOptionPane.showMessageDialog(this, "Data read successfully. " + newRows + " added.");
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(hospiceDesign.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                        selectStudentNumber =0;
-                        resetFields();
-                        resetTableModel();
-                        JOptionPane.showMessageDialog(this, "Data read successfully. " + newRows + " added.");
-            } catch (ClassNotFoundException ex) {
+            } catch (IOException ex) {
                 Logger.getLogger(hospiceDesign.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (IOException ex) {
-            Logger.getLogger(hospiceDesign.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            
+        } else if (status == JFileChooser.CANCEL_OPTION) {
+            System.out.println(JFileChooser.CANCEL_OPTION);
+         }
+       
     }//GEN-LAST:event_readListBtnActionPerformed
 
     private Student getStudentIntance(String[] studentArray) {
