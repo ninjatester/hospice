@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package hospiceapp;
 
 /**
@@ -141,6 +137,10 @@ public class Student implements java.io.Serializable {
 
         public void setStatus(int status) {
             this.status = status;
+        }
+        
+        public void showData() {
+            System.out.println("Name " + this.name + " EGN " + this.EGN + " Specialty " + this.specialty + " Course " + this.course);
         }
         
 }

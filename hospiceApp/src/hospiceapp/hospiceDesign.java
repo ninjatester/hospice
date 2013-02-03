@@ -478,17 +478,20 @@ public class hospiceDesign extends javax.swing.JFrame {
         try {
             ObjectInputStream input = new ObjectInputStream(new FileInputStream("data.txt"));
             try {
+                int newRows =0;
                 List<String[]> readed = (List<String[]>) input.readObject();
                 for (int i = 0; i < readed.size(); i++) {
-                         String[] studentArr = readed.get(i);
-                        String holder= "";
-                        for(int j=0; j < studentArr.length; j++) {
-                           holder += " " + studentArr[j];
-
+                        Student temp = getStudentIntance(readed.get(i));
+                        if (!studentDAO.checkExistance(temp)) {
+                            studentDAO.add(temp);
+                            newRows++;
                         }
-                         System.out.println(holder);
                         
                 }
+                        selectStudentNumber =0;
+                        resetFields();
+                        resetTableModel();
+                        JOptionPane.showMessageDialog(this, "Data read successfully. " + newRows + " added.");
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(hospiceDesign.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -497,6 +500,23 @@ public class hospiceDesign extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_readListBtnActionPerformed
 
+    private Student getStudentIntance(String[] studentArray) {
+        Student addNew = new Student();
+        addNew.setName(studentArray[1]);
+        addNew.setEGN(Integer.parseInt(studentArray[2]));
+        addNew.setCourse(Integer.parseInt(studentArray[3]));
+        addNew.setSpecialty(studentArray[4]);
+        addNew.setAddress(studentArray[5]);
+        addNew.setIsOrphan(Integer.parseInt(studentArray[6]));
+        addNew.setIsMarried(Integer.parseInt(studentArray[7]));
+        addNew.setIsLonelyParent(Integer.parseInt(studentArray[8]));
+        addNew.setHasRelatives(Integer.parseInt(studentArray[9]));
+        addNew.setAchievement(Double.parseDouble(studentArray[10]));
+        addNew.setStatus((int)Double.parseDouble(studentArray[11]));
+       
+        return addNew;
+    }
+    
     
     private void resetFields() {
         nameTextField.setText("");

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package hospiceapp;
 
 import java.util.*;
@@ -194,6 +190,49 @@ public class StudentDAO {
                                 e.printStackTrace();
                         }
                        return students;
+                }
+        }
+        
+        
+        public boolean checkExistance(Student studentInstance) {
+                boolean returnValue = true;
+                try {
+                        String queryString = "SELECT * FROM students "
+                                + " WHERE EGN=? AND name=? AND course=? AND specialty=?";
+                        connection = getConnection();
+                        ptmt = connection.prepareStatement(queryString);
+                        ptmt.setInt(1, studentInstance.getEGN());
+                        ptmt.setString(2, studentInstance.getName());
+                        ptmt.setInt(3, studentInstance.getCourse());
+                        ptmt.setString(4, studentInstance.getSpecialty());
+                        
+                        resultSet = ptmt.executeQuery();
+                        
+                        if (resultSet.first()) {
+                            
+                        } else {
+                           returnValue = false;
+                        }
+                       
+                        
+                } catch (SQLException e) {
+                        e.printStackTrace();
+                } finally {
+                        try {
+                                if (ptmt != null)
+                                        ptmt.close();
+                                if (connection != null)
+                                        connection.close();
+                        }
+
+                        catch (SQLException e) {
+                                e.printStackTrace();
+                        } catch (Exception e) {
+                                e.printStackTrace();
+
+                        }
+                        
+                        return returnValue;
                 }
         }
 }
