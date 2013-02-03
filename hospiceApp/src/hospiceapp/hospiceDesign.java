@@ -4,7 +4,14 @@
  */
 package hospiceapp;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -106,6 +113,8 @@ public class hospiceDesign extends javax.swing.JFrame {
         clearBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
         saveBtn = new javax.swing.JButton();
+        saveListBtn = new javax.swing.JButton();
+        readListBtn = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -280,6 +289,20 @@ public class hospiceDesign extends javax.swing.JFrame {
             }
         });
 
+        saveListBtn.setText("Save List to File");
+        saveListBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveListBtnActionPerformed(evt);
+            }
+        });
+
+        readListBtn.setText("Read List from File");
+        readListBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                readListBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -288,7 +311,10 @@ public class hospiceDesign extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(saveListBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(readListBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(clearBtn)
                         .addGap(18, 18, 18)
                         .addComponent(saveBtn)
@@ -312,7 +338,9 @@ public class hospiceDesign extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(clearBtn)
                     .addComponent(deleteBtn)
-                    .addComponent(saveBtn))
+                    .addComponent(saveBtn)
+                    .addComponent(saveListBtn)
+                    .addComponent(readListBtn))
                 .addContainerGap())
         );
 
@@ -421,6 +449,54 @@ public class hospiceDesign extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_deleteBtnActionPerformed
 
+    private void saveListBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveListBtnActionPerformed
+        // TODO add your handling code here:
+        //save lsit lgoic here
+        List<String[]> studentResult = studentDAO.findAll();
+        for (int i = 0; i < studentResult.size(); i++) {
+            String[] studentArr = studentResult.get(i);
+            String holder= "";
+            for(int j=0; j < studentArr.length; j++) {
+               holder += " " + studentArr[j];
+               
+            }
+             System.out.println(holder);
+        }
+        System.out.println("============================================");
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("data.txt"));
+            out.writeObject(studentResult);
+        } catch (IOException ex) {
+            Logger.getLogger(
+                    hospiceDesign.class.getName()).log(
+                    Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_saveListBtnActionPerformed
+
+    private void readListBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_readListBtnActionPerformed
+        // TODO add your handling code here:
+        try {
+            ObjectInputStream input = new ObjectInputStream(new FileInputStream("data.txt"));
+            try {
+                List<String[]> readed = (List<String[]>) input.readObject();
+                for (int i = 0; i < readed.size(); i++) {
+                         String[] studentArr = readed.get(i);
+                        String holder= "";
+                        for(int j=0; j < studentArr.length; j++) {
+                           holder += " " + studentArr[j];
+
+                        }
+                         System.out.println(holder);
+                        
+                }
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(hospiceDesign.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(hospiceDesign.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_readListBtnActionPerformed
+
     
     private void resetFields() {
         nameTextField.setText("");
@@ -496,7 +572,9 @@ public class hospiceDesign extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField nameTextField;
+    private javax.swing.JButton readListBtn;
     private javax.swing.JButton saveBtn;
+    private javax.swing.JButton saveListBtn;
     private javax.swing.JLabel specialtyLabel;
     private javax.swing.JTextField specialtyTextField;
     private javax.swing.JCheckBox status;

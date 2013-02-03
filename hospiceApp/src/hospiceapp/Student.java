@@ -8,7 +8,7 @@ package hospiceapp;
  *
  * @author workstation
  */
-public class Student {
+public class Student implements java.io.Serializable {
         int idNumber;
         String name;
         int EGN;
@@ -41,6 +41,7 @@ public class Student {
                 this.achievement = achievement;
                 this.status = status;
         }
+        
 
         public int getIdNumber() {
             return idNumber;
